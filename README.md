@@ -14,6 +14,16 @@ to:
 
     sudo -ukodi kodi-standalone
 
+Also the kodi user will need permission to run chvt as root:
+
+    sudo vim /etc/sudoers
+
+Then add this line:
+
+    kodi ALL=(root) NOPASSWD: /bin/chvt
+
+Keep in mind, if you mess up sudoers you will have to connect your sd card to another computer and fix it because you wont be able to sudo.
+
 Next install dependencies:
 
     sudo apt-get update
