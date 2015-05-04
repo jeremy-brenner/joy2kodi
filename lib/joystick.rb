@@ -5,6 +5,7 @@ class Joystick
     SDL.Init( SDL::INIT_JOYSTICK )
     raise "No SDL joystick available" if SDL.NumJoysticks == 0
     @joystick = SDL.JoystickOpen(0)
+    print "Got joystick with #{buttons} buttons, #{hats} hats, and #{axes} axes.\n"
   end
 
   def button(n)

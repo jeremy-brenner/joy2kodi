@@ -22,8 +22,10 @@ class Kodi
 
   def wait_for_it
     while not running
-      sleep 5
+      print "Waiting for Kodi...\n"
+      sleep 2
     end
+    print "Kodi is alive!\n"
     true
   end
 
@@ -57,6 +59,7 @@ class Kodi
 
   def exec(method)
     if not @mq.has_key? method or elapsed(method) > @repeat_rate
+      print "Calling #{method}\n"
       post method
       @mq[method] =  Time.now 
     end
