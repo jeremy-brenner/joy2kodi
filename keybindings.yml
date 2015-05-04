@@ -1,0 +1,11 @@
+hats:
+  0: 
+    8: Input.Left
+    2: Input.Right
+    1: Input.Up
+    4: Input.Down
+buttons:
+  0: Input.Select
+  1: Input.Back
+  2: Input.Info
+  3: Input.Home
