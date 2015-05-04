@@ -28,7 +28,7 @@ class Joystick
   end
 
   def axes
-    SDL.JoystickNumAxes(@joystick)
+    SDL.JoystickNumAxes @joystick
   end
 
   def update

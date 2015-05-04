@@ -1,7 +1,7 @@
 
 require 'json'
 require 'net/http'
-
+require 'pp'
 class Kodi
   def initialize(settings)
     @user = settings['user']
@@ -11,9 +11,20 @@ class Kodi
     @mq = {}
     @repeat_rate = 0.25
   end
-  
+
   def rpc_url
     "http://#{@host}:#{@port}/jsonrpc"
+  end
+
+  def running
+    post('JSONRPC.Ping')['result'] == 'pong'
+  end
+
+  def wait_for_it
+    while not running
+      sleep 5
+    end
+    true
   end
 
   def command(method)
