@@ -10,6 +10,7 @@ class Kodi
     @port = settings['port']
     @mq = {}
     @repeat_rate = 0.25
+    @alive = true
   end
 
   def rpc_url
@@ -17,7 +18,8 @@ class Kodi
   end
 
   def running
-    post('JSONRPC.Ping')['result'] == 'pong'
+    # Only send a ping if we have a reason to believe it is down.
+    @alive || post('JSONRPC.Ping')['result'] == 'pong'
   end
 
   def wait_for_it
@@ -47,8 +49,10 @@ class Kodi
       res = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(req)
       end
+      @alive = true
       JSON.parse(res.body)
     rescue
+      @alive = false
       { error: 'failed' }
     end
   end
