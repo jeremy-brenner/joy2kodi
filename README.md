@@ -1,6 +1,8 @@
 # joy2kodi
 Joystick library for kodi + emulationstation on the raspberry pi
 
+The RetroPie project: http://blog.petrockblock.com/retropie/
+
 Kodi for the Raspberry Pi does NOT support joysticks.  It relys on X + SDL to get joystick input.  This is a hack that will allow you to control kodi with the same joystick you use for emulationstation.  For some reason Kodi freezes up joystick input even though they do not work.  
 
 The first thing to do is run kodi under a user that does NOT have access to the joystick device.  The kodi user should probaly already exist and is perfect for this.
