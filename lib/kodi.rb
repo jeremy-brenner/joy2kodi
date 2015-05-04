@@ -51,8 +51,12 @@ class Kodi
     end
   end
 
+  def elapsed(method)
+    Time.now - @mq[method]
+  end
+  
   def exec(method)
-    if not @mq.has_key? method or ( Time.now - @mq[method] ) > @repeat_rate
+    if not @mq.has_key? method or elapsed(method) > @repeat_rate
       post method
       @mq[method] =  Time.now 
     end
