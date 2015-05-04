@@ -37,7 +37,7 @@ class Kodi
 
   def post(method)
     uri = URI rpc_url
-    req = Net::HTTP::Post.new(uri)
+    req = Net::HTTP::Post.new(uri.path)
     req.body = command(method).to_json
     req.basic_auth @user, @pass
     req.content_type = 'application/json'
@@ -54,7 +54,7 @@ class Kodi
   def elapsed(method)
     Time.now - @mq[method]
   end
-  
+
   def exec(method)
     if not @mq.has_key? method or elapsed(method) > @repeat_rate
       post method
