@@ -5,7 +5,8 @@ Kodi for the Raspberry Pi does NOT support joysticks.  It relys on X + SDL to ge
 
 The first thing to do is run kodi under a user that does NOT have access to the joystick device.  The kodi user should probaly already exist and is perfect for this.
 
-vim /home/pi/RetroPie/roms/ports/Kodi.sh
+    vim /home/pi/RetroPie/roms/ports/Kodi.sh
+
 change:
 
     kodi-standalone
@@ -60,4 +61,4 @@ Add this line at the bottom BEFORE emulationstation. If you forget the "&" emula
     [ -n "${SSH_CONNECTION}" ] || ( cd /home/pi/joy2kodi; ruby joy2kodi.rb > joy2kodi.log ) &
 
 Reboot and pray to the diety of your choice.
-
+If all goes well you should have seemless joystick support for emulationstation + kodi.
