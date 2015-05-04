@@ -3,11 +3,11 @@ require 'json'
 require 'net/http'
 
 class Kodi
-  def initialize(user,pass,host,port)
-    @user = user
-    @pass = pass
-    @host = host
-    @port = port
+  def initialize(settings)
+    @user = settings['user']
+    @pass = settings['pass']
+    @host = settings['host']
+    @port = settings['port']
     @mq = {}
     @repeat_rate = 0.25
   end

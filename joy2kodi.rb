@@ -1,12 +1,12 @@
 require './lib/joystick.rb'
 require './lib/kodi.rb'
 require 'yaml'
-require 'pp'
 
-kodi = Kodi.new 'kodi', 'kodi', 'localhost', 8080
+kodi = Kodi.new YAML.load_file('kodi.yml')
 joystick = Joystick.new 
 
 keybindings = YAML.load_file('keybindings.yml')
+
 
 while true do
   events = joystick.events
